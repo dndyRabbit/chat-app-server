@@ -34,7 +34,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-app-rabbit.netlify.app",
     credentials: true,
   },
 });
@@ -48,7 +48,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send-msg", (data) => {
-    console.log(data, "DATAAAA");
     const sendUserSocket = onlineUsers.get(data.to);
 
     if (sendUserSocket) {
